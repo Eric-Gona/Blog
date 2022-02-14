@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre|Josefin+Slab|Righteous|Srisakdi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
+  <link rel="stylesheet" href="../static/css/index.css">
+  
+  <body>
+
+
+    <div class="navbar bg-dark" role="navigation" style="color: white;">
+        <div class="container">
+            <div class="navbar-brand">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                    </div>
+            <div class="navbar-collapse collapse">
+              <ul class="">
+                  <p style="font-size: 18px"><a href="/"><i class="home"></i>HOME</a></p>
+                  <ul class="nav">
+                      {% if current_user.is_authenticated %}
+                      <li style="font-size: 18px ;text-transform: uppercase;"><a href="/">WELCOME {{(current_user.author)}}</a></li>
+
+                      <li style="font-size: 18px" ><a href="{{url_for('main.profile',uname=current_user.author)}}"><i class="user"></i>VIEW PROFILE</a></li>
+                      <li style="font-size: 18px"><a href="{{url_for('auth.logout')}}" >SIGN OUT</a></li>
+                      {% else %}
+                      <li style="font-size: 18px"><a href="{{url_for('auth.login')}}">SIGN IN</a></li>
+
+                      {%endif%}
+                    </ul>
+          </div>
+       </div>
+   </div>
+</body>
+</html>

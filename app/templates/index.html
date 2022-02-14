@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+{% block styles%} 
+
+<link rel="stylesheet" href="../static/css/index.css">  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&family=Special+Elite&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre|Josefin+Slab|Righteous|Srisakdi&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{{ super() }}
+
+
+{% endblock %}
+
+{% block content %}
+
+
+<body >
+
+    <div class="container" >  
+          <div id="card" style="text-align: center;">
+              <h3 style="font-family: 'Montserrat', sans-serif;font-size: 150px; color:orange; font">BLOGG</h3>
+              <div>
+                <h1 style="text-align:'center' ;font-family: 'Merienda', cursive;" > </h1>
+              </div>
+              <hr>
+              <button type="button" class="btn btn-outline-primary bg-success" style="font-size: x-large"><a href="../blog/">NEW BLOG</a></button><br><br>
+          </div>  
+      </div>
+      
+      <div style="font-size: 30px; font-family: 'Merienda', cursive;  padding-top: 40px; text-align: center;">
+        {% for quote in getquotes %}
+        <p>{{quote.quote}}</p>
+        <p class="text-primary" style="text-align: center;font-family: 'Special Elite', cursive;"> By: {{quote.author}}</p>
+        <button type="button" class="btn btn-outline-success" style="font-size: xx-large;background-color: success;"><a href="{{url_for('main.category')}}">OPEN</a></button>
+        {% endfor %}
+    
+    </div>
+    </div>
+ 
+  </body>
+    
+  
+    {% endblock%}
