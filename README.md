@@ -51,3 +51,5 @@ Prerequisites
 - CSS
 
 ## License
+MIT License:
+Copyright (c) 2022 Eric Karisa

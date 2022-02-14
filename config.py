@@ -2,7 +2,7 @@ import os
 
 class Config:
     BASE_URL='http://quotes.stormconsultancy.co.uk/random.json'
-    SECRET_KEY = 'brian'
+    SECRET_KEY = 'eric'
     
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADED_PHOTOS_DEST ='app/static/photos'
