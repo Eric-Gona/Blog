@@ -2,16 +2,16 @@ from flask_login import login_required, current_user
 from flask import render_template,request,redirect,url_for, abort,flash
 from ..models import Blogs,Role,User,Comments,Subscriber
 from app._init_ import db,photos
-from ..main import main
+from app.main._init_ import main
 from ..email import mail_message
-from .forms import BlogsForm,CommentForm,UpdateProfile,SubscriberForm
+from app.models import Blogs,Comments,User,Subscriber
 from ..requests import getQuotes
 
 @main.route('/blog/', methods = ['GET','POST'])
 @login_required
 def new_blog():
 
-    form = BlogsForm()
+    form = Blogs()
 
     if form.validate_on_submit():
         category = form.category.data
@@ -70,7 +70,7 @@ def update_profile(uname):
     if user is None:
         abort(404)
 
-    form = UpdateProfile()
+    form = User()
 
     if form.validate_on_submit():
         user.bio = form.bio.data
@@ -109,7 +109,7 @@ def comment(id):
 def new_comment( blogs_id):
     
     blogs = Blogs.query.filter_by(id = blogs_id).first()
-    form = CommentForm()
+    form = Comments()
 
     if form.validate_on_submit():
         comment = form.comment.data
@@ -142,7 +142,7 @@ def deleteBlog(id):
 @main.route('/Subscribe',methods=['GET','POST'])
 def subBlog():
     
-    form = SubscriberForm()
+    form = Subscriber()
     if form.validate_on_submit():
         subs = Subscriber(email = form.email.data, username = form.username.data)    
         db.session.add(subs)

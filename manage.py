@@ -1,5 +1,5 @@
-from app._init_ import create_app,db
 from flask_script import Manager,Server
+from app._init_ import create_app,db
 from app.models import Blogs,User,Role
 from  flask_migrate import Migrate, MigrateCommand
 
@@ -8,7 +8,6 @@ app = create_app('production')
 
 manager = Manager(app)
 manager.add_command('server',Server)
-
 
 @manager.command
 def test():
